@@ -8,6 +8,7 @@ import bookstore.cart.Cart;
 import bookstore.homepage.GridLayoutManager;
 import bookstore.loginWindow.LoginWindow;
 import bookstore.checkout.CheckoutWindow;
+import bookstore.trade.TradeWindow;
 
 
 import java.awt.*;
@@ -48,7 +49,7 @@ public class RibbonLayout implements ActionListener {
         edit = new JMenu("Edit");
         search = new JMenu("Search");
         cart = new JMenu("Cart");
-        checkout = new JMenu("Checkout");
+//        checkout = new JMenu("Checkout");
         trade = new JMenu("Trade");
         help = new JMenu("Help");
         admin = new JMenu("Admin");
@@ -62,7 +63,7 @@ public class RibbonLayout implements ActionListener {
         addMenuItemWithSeparator(edit);
         addMenuItemWithSeparator(search);
         addMenuItemWithSeparator(cart);
-        addMenuItemWithSeparator(checkout);
+//        addMenuItemWithSeparator(checkout);
         addMenuItemWithSeparator(trade);
         addMenuItemWithSeparator(help);
         addMenuItemWithSeparator(admin);
@@ -78,6 +79,10 @@ public class RibbonLayout implements ActionListener {
         JMenuItem logoutMenuItem = new JMenuItem("Are you sure you want to Logout?");
         logoutMenuItem.addActionListener(new LogoutHandler());
         logout.add(logoutMenuItem);
+
+        JMenuItem openTradeWindow = new JMenuItem("Trade");
+        openTradeWindow.addActionListener(e -> openTradeWindow());
+        trade.add(openTradeWindow);
 
         // Add items inside edit menu with their handlers
         cutItem = new JMenuItem(new DefaultEditorKit.CutAction());
@@ -103,6 +108,11 @@ public class RibbonLayout implements ActionListener {
         help.addActionListener(this);
 
 
+    }
+
+    // Method to open the trade window
+    private void openTradeWindow() {
+        new TradeWindow();
     }
 
     // Method to add menu item with separator
